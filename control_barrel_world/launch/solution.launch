@@ -1,0 +1,17 @@
+<launch>
+    <param name="hit_threshold" value="0.0" />
+    <param name="stride_value" value="8.0" />
+    <param name="distance_threshold" value="0.3" />
+    <param name="cluster_tolerance" value="0.5" />
+    <param name="min_cluster_size" value="10" />
+    <param name="max_cluster_size" value="25000" />
+
+    <include file="$(find car_simulation)/launch/simulation_barrel_world.launch"/>
+
+    <node pkg="opencv_person_detector" type="opencv_person_detector_node" name="opencv_person_detector_node" output="screen"/>
+
+    <node pkg="pcl_obstacle_detector" type="pcl_obstacle_detector_node" name="pcl_obstacle_detector_node" output="screen"/>
+  
+    <node pkg="control_barrel_world" type="control_barrel_world_node" name="control_barrel_world_node"  output="screen"/>
+
+</launch>
